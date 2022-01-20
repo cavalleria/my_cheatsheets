@@ -1,0 +1,6 @@
+---
+syntax: cmake
+tags: [ development ]
+---
+# generate build files
+cmake -S /path/to/source -B /path/to/build
