@@ -1,6 +1,15 @@
 ---
 syntax: cmake
-tags: [ development ]
+tags: [ development, cpp ]
 ---
 # generate build files
 cmake -S /path/to/source -B /path/to/build
+
+# build
+cmake --build /path/to/build
+
+# genetate build files with Ninja
+cmake -S /path/to/source -B /path/to/build -G Ninja
+
+# build with ninja
+ninja -C /path/to/build
