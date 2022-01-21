@@ -1,0 +1,46 @@
+---
+syntax: python
+tags: [ development, format ]
+---
+# four styles are predefined:
+- pep8 (default)
+- google (based off of the Google Python Style Guide)
+- yapf (for use with Google open source projects)
+- facebook
+
+# YAPF will search for the formatting style in the following manner:
+1.Specified on the command line
+    eg: --style='{based_on_style: pep8, indent_width: 2}'
+2.In the [style] section of a `.style.yapf` file in either the current directory or one of its parent directories.
+    eg: [style]
+        based_on_style = yapf
+        spaces_before_comment = 4
+        split_before_logical_operator = true
+3.In the [yapf] section of a `setup.cfg` file in either the current directory or one of its parent directories.
+    eg: [yapf]
+        based_on_style = pep8
+        blank_line_before_nested_class_or_def = true
+        split_before_expression_after_opening_paren = true
+4.In the [tool.yapf] section of a `pyproject.toml` file in either the current directory or one of its parent directories.
+    eg: [tool.yapf]
+        based_on_style = pep8
+        blank_line_before_nested_class_or_def = true
+        split_before_expression_after_opening_paren = true
+5.In the [style] section of a `~/.config/yapf/style` file in your home directory.
+6.If none of those files are found, the default style is used (PEP8).
+
+# Disable yapf
+# yapf: disable
+FOO = {
+    # ... some very large, complex data literal.
+}
+
+BAR = [
+    # ... another large data literal.
+]
+# yapf: enable
+BAZ = {
+    (1, 2, 3, 4),
+    (5, 6, 7, 8),
+    (9, 10, 11, 12),
+}  # yapf: disable
