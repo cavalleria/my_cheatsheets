@@ -38,3 +38,7 @@ ffmpeg -ss 00:34:24.85 -t 10 -i path/to/file.mp4 -f mp3 pipe:play | ffplay -i pi
 # -f : audio format
 # -ac : audio channel
 ffmpeg -i path/to/file.mp4 -f wav -vn -ac 1 path/to/file.wav
+
+# count total frames of video
+ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 input.mp4
+
