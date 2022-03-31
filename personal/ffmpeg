@@ -42,3 +42,5 @@ ffmpeg -i path/to/file.mp4 -f wav -vn -ac 1 path/to/file.wav
 # count total frames of video
 ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of default=nokey=1:noprint_wrappers=1 input.mp4
 
+# count total wav duration 
+find subwav -name "*.wav" | xargs -n1 -I {} ffprobe -v error -select_streams a:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 {} | awk '{sum+=$1}END{print sum}'
